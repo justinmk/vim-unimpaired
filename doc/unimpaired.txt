@@ -21,8 +21,8 @@ is "args" and for the "q" commands is "quickfix".
 *]A*     |:last|
 *[b*     |:bprevious|
 *]b*     |:bnext|
-*[B*     |:bfirst|
-*]B*     |:blast|
+*[B*     |:bfirst| or :[count]buffer
+*]B*     |:blast| or :[count]buffer
 *[l*     |:lprevious|
 *]l*     |:lnext|
 *[L*     |:lfirst|

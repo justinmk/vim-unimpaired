@@ -46,8 +46,13 @@ function! s:MapNextFamily(map,cmd) abort
   let end = '"<CR>'.(a:cmd ==# 'l' || a:cmd ==# 'c' ? 'zv' : '')
   execute 'nnoremap <silent> '.map.'Previous :<C-U>exe "'.cmd.'previous'.end
   execute 'nnoremap <silent> '.map.'Next     :<C-U>exe "'.cmd.'next'.end
-  execute 'nnoremap <silent> '.map.'First    :<C-U>exe "'.cmd.'first'.end
-  execute 'nnoremap <silent> '.map.'Last     :<C-U>exe "'.cmd.'last'.end
+  if a:map ==# 'b'
+    execute 'nnoremap <silent> '.map.'First :<C-U>exe (v:count?v:count."buffer":"bfirst")<CR>'
+    execute 'nnoremap <silent> '.map.'Last  :<C-U>exe (v:count?v:count."buffer":"blast")<CR>'
+  else
+    execute 'nnoremap <silent> '.map.'First    :<C-U>exe "'.cmd.'first'.end
+    execute 'nnoremap <silent> '.map.'Last     :<C-U>exe "'.cmd.'last'.end
+  endif
   call s:map('n', '['.        a:map , map.'Previous')
   call s:map('n', ']'.        a:map , map.'Next')
   call s:map('n', '['.toupper(a:map), map.'First')
